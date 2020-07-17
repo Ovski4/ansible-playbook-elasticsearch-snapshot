@@ -1,0 +1,21 @@
+version: '3.7'
+
+services:
+
+  # elasticsearch_host should have the service name as its value
+  elasticsearch-snapshot:
+    image: ovski/ansible:v2.9.6
+    volumes:
+      - ./:/var/www/ansible/playbooks/elasticsearch-snapshot
+    command: >
+      ansible-playbook /var/www/ansible/playbooks/elasticsearch-snapshot/main.yml
+        -e "elasticsearch_port=9200"
+        -e "elasticsearch_host=elasticsearch"
+        -e "elasticsearch_repository=backup"
+    networks:
+        - elasticsearch_container_network
+
+networks:
+
+  elasticsearch_container_network:
+    external: true
