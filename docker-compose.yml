@@ -4,7 +4,7 @@ services:
 
   # elasticsearch_host should have the service name as its value
   elasticsearch-snapshot:
-    image: ovski/ansible:v2.9.6
+    image: ovski/ansible:v2.13.3
     volumes:
       - ./:/var/www/ansible/playbooks/elasticsearch-snapshot
     command: >
