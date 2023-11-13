@@ -8,3 +8,4 @@
       uri:
         url: http://{{ elasticsearch_host | default('elasticsearch') }}:{{ elasticsearch_port | default('9200') }}/_snapshot/{{ elasticsearch_repository | default('backup') }}/snapshot_{{ lookup('pipe','date +%Y_%m_%d_%H_%M_%S') }}?wait_for_completion=true
         method: PUT
+        timeout: "{{ timeout | default('30') }}"
